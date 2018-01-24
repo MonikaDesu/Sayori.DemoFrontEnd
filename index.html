@@ -32,17 +32,20 @@ SOFTWARE.
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
     <link rel="stylesheet" href="css/index.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="js/dropdown.js"></script>
     <script src="js/checkBrowser.js"></script>
 </head>
 
 <body class="yellow lighten-5">
+    <script>
+        var elem = document.querySelector('.dropdown-trigger');
+        var instance = M.Dropdown.init(elem, options);
+    </script>
     <div class="container">
         <div class="card">
             <div class="card-content">
                 <form class="col s12">
                     <div class="row">
-                        <div class="input-field col s12 container">
+                        <div class="input-field col s12 card-container">
                             <textarea id="poemtext" class="materialize-textarea card-field"></textarea>
                             <label for="poemtext">Poem</label>
                             <submit class="btn red lighten-2 waves-light">submit</submit>

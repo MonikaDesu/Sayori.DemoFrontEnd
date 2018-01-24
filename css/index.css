@@ -7,3 +7,15 @@ body {
   flex-direction: column;
   padding:50px;
 }
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  padding:50px;
+}
+
+.card {
+    display: block;
+    z-index: 1;
+    margin: 20%;
+}
