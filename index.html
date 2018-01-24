@@ -22,27 +22,34 @@ SOFTWARE.
 -->
 <!doctype html>
 <html>
-    <head>
-     <meta charset="UTF-8">
-     <meta name="description" content="Poem server demo | Sayori">
-     <meta name="author" content="Clarity">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">        
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css">
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
-     <link rel="stylesheet" href="css/index.css">
-     <script src="js/checkBrowser.js"></script>
-    </head>
-    <body class="yellow lighten-5">
-        <div class="container">
-            <div class="row">
-                <div class ="col s10 m2">
-                    <div class="card white">
-                        <div class="card-content">
-                            
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Poem server demo | Sayori">
+    <meta name="author" content="Clarity">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/checkBrowser.js"></script>
+</head>
+
+<body class="yellow lighten-5">
+    <div class="container">
+        <div class="card">
+            <form class="col s12">
+                <div class="row">
+                    <div class="card-content">
+                        <div class="input-field col s12">
+                            <textarea id="poemtext" class="materialize-textarea card-field"></textarea>
+                            <label for="poemtext">Poem</label>
+                            <submit class="btn teal waves-light">submit</submit>
                         </div>
                     </div>
-                </div>
+            </form>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
