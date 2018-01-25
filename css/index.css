@@ -12,6 +12,7 @@ body {
   display: flex;
   flex-direction: column;
   padding:50px;
+  margin-bottom: 20px;
 }
 
 .card {
