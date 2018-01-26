@@ -20,51 +20,94 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 -->
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Poem server demo | Sayori">
-    <meta name="author" content="Clarity">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayori Poem Generator Demo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/index.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="js/checkBrowser.js"></script>
+
+    <!-- OpenGraph Meta -->
+    <meta property="og:title" content="Poem Generator Demo">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://demo.sayori.headbow.stream">
+    <meta property="og:description" content="A live demonstration of the Sayori poem generator.">
+    <meta property="org:site_name" content="Sayori Demo">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A live demonstration of the Sayori poem generator.">
+    <meta name="author" content="ClarityMoe">
 </head>
 
 <body class="yellow lighten-5">
-    <script>
-        var elem = document.querySelector('.dropdown-trigger');
-        var instance = M.Dropdown.init(elem, options);
-    </script>
     <div class="container">
+        <h2 class="center">Sayori Poem Generator Demo</h2>
+        <p class="center">This is a live demo of the <a href="https://github.com/MonikaDesu/Sayori/">Sayori poem generator</a>, used to show off what it can do.</p>
+
+        <div id="error-card" class="card hidden">
+            
+        </div>
+
         <div class="card">
             <div class="card-content">
-                <form class="col s12">
-                    <div class="row">
-                        <!-- Dropdown Trigger -->
-                        <a class='dropdown-trigger col s12 btn card-container white black-text' href='#' data-target='dropdown1'>Poem Font</a>
+                <div class="row">
+                    <span class="card-title padd">
+                        Generate Poem
+                    </span>
+                    <!-- Dropdown Trigger -->
+                    <a id="poem-dropdown" class="dropdown-trigger col s12 btn card-container white black-text" href="#" data-target="dropdown1">Poem Font</a>
 
-                        <!-- Dropdown Structure -->
-                        <ul id='dropdown1' class='dropdown-content'>
-                            <li><a href="#!">Monika</a></li>
-                            <li><a href="#!">Natsuki</a></li>
-                        </ul>
-                        <br>
-                        <br>
+                    <!-- Dropdown Structure -->
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li><a href="#" onclick="font = 'm1'">Monika</a></li>
+                        <li><a href="#" onclick="font = 'n1'">Natsuki</a></li>
+                        <li><a href="#" onclick="font = 's1'">Sayori</a></li>
+                        <li><a href="#" onclick="font = 'y1'">Yuri (Normal)</a></li>
+                        <li><a href="#" onclick="font = 'y2'">Yuri (Fast)</a></li>
+                        <li><a href="#" onclick="font = 'y3'">Yuri (Obsessed)</a></li>
+                    </ul>
+                    <form>
                         <div class="input-field col s12 card-container">
-                            <textarea id="poemtext" class="materialize-textarea card-field"></textarea>
-                            <label for="poemtext">Poem</label>
-                            <submit class="btn red lighten-2 waves-light">submit</submit>
+                            <textarea id="poem-text" class="materialize-textarea card-field"></textarea>
+                            <label for="poem-text">Poem</label>
+                            <submit id="poem-submitter" class="btn red lighten-2 waves-light">submit</submit>
+
+                            <div id="poem-spinner" class="preloader-wrapper active hidden">
+                                <div class="spinner-layer spinner-red-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="poem-card" class="card hidden">
+            <div class="card-content">
+                <span class="card-title">
+                    Here's your poem (Click on it to expand in a new tab).
+                </span>
+            </div>
+            <div class="card-image">
+                <a id="poem-card-img" href="https://sy-prod-cdn.headbow.stream/poems/2748df3d645e7d4dcbb3441f928807e2.png" target="_blank">
+                    <img src="https://sy-prod-cdn.headbow.stream/poems/2748df3d645e7d4dcbb3441f928807e2.png">
+                </a>
             </div>
         </div>
     </div>
-</body>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
 </html>

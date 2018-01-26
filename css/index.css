@@ -3,20 +3,39 @@ body {
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  padding:50px;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-container {
-  display: flex;
-  flex-direction: column;
-  padding:50px;
-  margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    padding:50px;
+    margin-bottom: 20px;
 }
 
 .card {
     display: block;
     z-index: 1;
-    margin: 20%;
+    margin: 50px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.padd {
+    padding-bottom: 15px;
+}
+
+#poem-spinner {
+    margin: auto;
+}
+
+#poem-submitter {
+    margin-bottom: 20px;
+}
+
+#poem-card {
+    margin-top: 50px;
 }
