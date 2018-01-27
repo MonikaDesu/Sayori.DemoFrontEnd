@@ -28,6 +28,10 @@ body {
     padding-bottom: 15px;
 }
 
+.mono {
+    font-family: 'Roboto Mono', monospace;
+}
+
 #poem-spinner {
     margin: auto;
 }

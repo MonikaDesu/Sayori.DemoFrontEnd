@@ -3,6 +3,7 @@ const spinner = document.getElementById('poem-spinner');
 const poemCard = document.getElementById('poem-card');
 const poemImg = document.getElementById('poem-card-img');
 const errCard = document.getElementById('error-card');
+const toasts = [];
 
 let font = 'm1';
 
@@ -15,8 +16,20 @@ submitter.addEventListener('click', function() {
     sendPoem().then(() => {
         this.classList.remove('disabled');
         spinner.classList.add('hidden');
+    }).catch(err => {
+        this.classList.remove('disabled');
+        spinner.classList.add('hidden');
+
+        handleError(err);
     });
 });
+
+function makeToast(text) {
+    // This actually broke Materialize.
+    //for (let oldToast of toasts) oldToast.dismiss();
+
+    toasts.push(M.toast({html: text}));
+}
 
 function sendPoem() {
     return new Promise((resolve, reject) => {
@@ -27,25 +40,41 @@ function sendPoem() {
         };
         let req = new XMLHttpRequest();
 
-        req.open('POST', 'http://sy-staging.herokuapp.com/generate', true);
-        req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        if (!text) {
+            makeToast('Please provide a poem to generate.');
+            return resolve();
+        } else if (!['m1', 'n1', 's1', 'y1', 'y2', 'y3'].includes(font)) {
+            makeToast('Invalid font. Please use the dropdown to select a font.');
+            return resolve();
+        }
+
+        req.open('POST', 'http://sayori.headbow.stream/generate', true);
+        req.setRequestHeader('Content-Type', 'application/json');
         req.send(JSON.stringify(payload));
 
         req.addEventListener('load', function() {
-            if (this.status !== 200) return handleError(new Error(`Failed to generate poem: ${this.statusText}`));
+            if (this.status !== 200) return reject(new Error(`Invalid response code: ${this.statusText}`));
 
             let resp = JSON.parse(this.responseText);
 
-            if (resp.error) return handleError(new Error(resp.error));
+            if (resp.error) return reject(new Error(resp.error));
 
             poemCard.classList.remove('hidden');
 
             poemImg.href = resp.url;
             poemImg.children[0].src = resp.url;
+
+            resolve();
+        });
+        req.addEventListener('error', () => {
+            reject(new Error('An unknown network error occurred.'));
         });
     });
 }
 
 function handleError(err) {
-    console.log(err)
+    makeToast('Failed to generate poem!');
+
+    errCard.classList.remove('hidden');
+    document.getElementById('error-text').innerHTML = err.mesasge || err;
 }

@@ -25,7 +25,7 @@ SOFTWARE.
 <head>
     <title>Sayori Poem Generator Demo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons|Roboto+Mono">
     <link rel="stylesheet" href="css/index.css">
 
     <!-- OpenGraph Meta -->
@@ -46,8 +46,13 @@ SOFTWARE.
         <h2 class="center">Sayori Poem Generator Demo</h2>
         <p class="center">This is a live demo of the <a href="https://github.com/MonikaDesu/Sayori/">Sayori poem generator</a>, used to show off what it can do.</p>
 
-        <div id="error-card" class="card hidden">
-            
+        <div id="error-card" class="card red lighten-2 hidden">
+            <div class="card-content">
+                <span class="card-title">
+                    Error
+                </span>
+                <span id="error-text" class="mono"></span>
+            </div>
         </div>
 
         <div class="card">
