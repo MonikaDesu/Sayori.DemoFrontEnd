@@ -19,7 +19,7 @@ function get_browser() {
  
  var acceptedVersions = [
        "Chrome62",
-       "Chrome",
+       "Chrome61",
        "Firefox57",
        "Firefox58",
        "Firefox59"
