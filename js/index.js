@@ -52,7 +52,7 @@ function sendPoem() {
             return resolve();
         }
 
-        req.open('POST', 'http://sy-stage-chinodesuuu-run.8a09.starter-us-east-2.openshiftapps.com/generate', true);
+        req.open('POST', 'https://sayori-staging.headbow.stream/generate', true);
         req.setRequestHeader('Content-Type', 'application/json');
         req.send(JSON.stringify(payload));
 
