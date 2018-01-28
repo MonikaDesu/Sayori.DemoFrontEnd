@@ -22,11 +22,13 @@ SOFTWARE.
 -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Sayori Poem Generator Demo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons|Roboto+Mono">
     <link rel="stylesheet" href="css/index.css">
+    <script src="js/script.js"></script>
 
     <!-- OpenGraph Meta -->
     <meta property="og:title" content="Poem Generator Demo">
@@ -42,6 +44,11 @@ SOFTWARE.
 </head>
 
 <body class="yellow lighten-5">
+    <div class="loading">
+        <div class="loading-wrap valign-wrapper">
+            <img class="floaty" src="img/kotori.png">
+        </div>
+    </div>
     <div class="container">
         <h2 class="center">Sayori Poem Generator Demo</h2>
         <p class="center">This is a live demo of the <a href="https://github.com/MonikaDesu/Sayori/">Sayori poem generator</a>, used to show off what it can do.</p>
@@ -115,4 +122,5 @@ SOFTWARE.
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
     <script src="js/index.js"></script>
 </body>
+
 </html>
