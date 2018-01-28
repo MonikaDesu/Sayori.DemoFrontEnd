@@ -24,7 +24,7 @@ function get_browser() {
  }
  
  var acceptedVersions = [
-      // "Opera15",
+       "Opera15",
        "Chrome62",
        "Chrome61",
        "Firefox57",
@@ -32,7 +32,7 @@ function get_browser() {
        "Firefox59"
      ];
 
-var elem =document.querySelector('#unsupported-modal');
+var elem = document.getElementById('unsupported-modal');
 var instance = M.Modal.init(elem , {
     inDuration: 500,
     dismissible: false
