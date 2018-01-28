@@ -26,7 +26,7 @@ submitter.addEventListener('click', function() {
     });
 });
 
-console.log(`Detected Browser Version: ${browser.name} ${browser.version}`);
+console.log(`Detected Browser Version: ${browser.name} ${browser.version} \n Include this output on when you report an issue in GitHub.`);
 
 function makeToast(text) {
     // This actually broke Materialize.
