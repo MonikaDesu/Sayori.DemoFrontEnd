@@ -52,7 +52,7 @@ function sendPoem() {
             return resolve();
         }
 
-        req.open('POST', 'http://sayori.headbow.stream/generate', true);
+        req.open('POST', 'https://sayori.headbow.stream/generate', true);
         req.setRequestHeader('Content-Type', 'application/json');
         req.send(JSON.stringify(payload));
 
