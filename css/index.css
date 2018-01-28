@@ -77,3 +77,10 @@ body {
     animation: float 3s ease-in-out infinite;
     margin: auto
 }
+
+.avatar-container {
+    display:block;
+    position: relative;
+    margin: auto;
+    z-index: -2;
+}
