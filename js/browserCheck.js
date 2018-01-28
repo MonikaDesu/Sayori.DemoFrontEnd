@@ -1,4 +1,10 @@
 /* global navigator */
+/* global M */
+
+/**
+ * Gets the browser version 
+ * @returns {Object}
+ */
 function get_browser() {
     var ua = navigator.userAgent,tem,M=ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || []; 
     if(/trident/i.test(M[1])){
@@ -18,16 +24,22 @@ function get_browser() {
  }
  
  var acceptedVersions = [
-      "Opera15",
+      // "Opera15",
        "Chrome62",
        "Chrome61",
        "Firefox57",
        "Firefox58",
        "Firefox59"
      ];
- 
- $(document).ready(function () {
-     if(get_browser().name + get_browser().version !== acceptedVersions) {
-         $(".modal").modal();
-     }
- })
+
+var elem =document.querySelector('#unsupported-modal');
+var instance = M.Modal.init(elem , {
+    inDuration: 500,
+    dismissible: false
+});
+
+
+//check browser version if in whitelist. If it doesn't exist
+if (get_browser().name + get_browser().version !== acceptedVersions) {
+    instance.open();
+}

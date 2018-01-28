@@ -104,3 +104,4 @@ function get_browser() {
       version: M[1]
     };
  }
+ 
