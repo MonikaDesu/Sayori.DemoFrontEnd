@@ -26,7 +26,7 @@ submitter.addEventListener('click', function() {
     });
 });
 
-console.log(`Detected Browser Version: ${browser.name} ${browser.version} \n Include this output on when you report an issue in GitHub.`);
+console.log(`Detected Browser Version: ${browser.name} ${browser.version} \nInclude this output on when you report an issue in GitHub.`);
 
 function makeToast(text) {
     // This actually broke Materialize.
@@ -52,7 +52,7 @@ function sendPoem() {
             return resolve();
         }
 
-        req.open('POST', 'https://sy-staging.herokuapp.com/generate', true);
+        req.open('POST', 'http://sy-stage-chinodesuuu-run.8a09.starter-us-east-2.openshiftapps.com/generate', true);
         req.setRequestHeader('Content-Type', 'application/json');
         req.send(JSON.stringify(payload));
 
@@ -104,4 +104,3 @@ function get_browser() {
       version: M[1]
     };
  }
- 

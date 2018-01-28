@@ -34,7 +34,6 @@ function get_browser() {
 
 var elem = document.getElementById('unsupported-modal');
 var instance = M.Modal.init(elem , {
-    inDuration: 500,
     dismissible: false
 });
 
