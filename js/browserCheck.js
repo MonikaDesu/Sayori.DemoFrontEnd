@@ -18,6 +18,7 @@ function get_browser() {
  }
  
  var acceptedVersions = [
+      "Opera15",
        "Chrome62",
        "Chrome61",
        "Firefox57",
