@@ -32,7 +32,7 @@ function makeToast(text) {
     // This actually broke Materialize.
     //for (let oldToast of toasts) oldToast.dismiss();
 
-    toasts.push(M.toast({html: text}));
+    toasts.push(M.toast({ html: text }));
 }
 
 function sendPoem() {
@@ -47,7 +47,8 @@ function sendPoem() {
         if (!text) {
             makeToast('Please provide a poem to generate.');
             return resolve();
-        } else if (!['m1', 'n1', 's1', 'y1', 'y2', 'y3'].includes(font)) {
+        }
+        else if (!['m1', 'n1', 's1', 'y1', 'y2', 'y3'].includes(font)) {
             makeToast('Invalid font. Please use the dropdown to select a font.');
             return resolve();
         }
@@ -88,19 +89,31 @@ function handleError(err) {
  * @returns {Object}
  */
 function get_browser() {
-    var ua = navigator.userAgent,tem,M=ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || []; 
-    if(/trident/i.test(M[1])){
-        tem=/\brv[ :]+(\d+)/g.exec(ua) || []; 
-        return {name:'IE',version:(tem[1]||'')};
-        }   
-    if(M[1]==='Chrome'){
-        tem=ua.match(/\bOPR|Edge\/(\d+)/);
-        if(tem!=null)   {return {name:'Opera', version:tem[1]};}
-        }   
-    M=M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
-    if((tem=ua.match(/version\/(\d+)/i))!=null) {M.splice(1,1,tem[1]);}
+    var ua = navigator.userAgent,
+        tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+    if (/trident/i.test(M[1])) {
+        tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+        return { name: 'IE', version: (tem[1] || '') };
+    }
+    if (M[1] === 'Chrome') {
+        tem = ua.match(/\bOPR|Edge\/(\d+)/);
+        if (tem != null) { return { name: 'Opera', version: tem[1] }; }
+    }
+    M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+    if ((tem = ua.match(/version\/(\d+)/i)) != null) { M.splice(1, 1, tem[1]); }
     return {
-      name: M[0],
-      version: M[1]
+        name: M[0],
+        version: M[1]
     };
- }
+}
+
+
+let acceptedVersions = [
+    "Opera15",
+    "Chrome62",
+    "Chrome61",
+    "Chrome59",
+    "Firefox57",
+    "Firefox58",
+    "Firefox59"
+];
