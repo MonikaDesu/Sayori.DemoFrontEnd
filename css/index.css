@@ -79,7 +79,7 @@ body {
 }
 
 .avatar-container {
-    display:block;
+    flex-direction:column;
     padding-bottom: 5%;
     position: relative;
     margin: auto;
