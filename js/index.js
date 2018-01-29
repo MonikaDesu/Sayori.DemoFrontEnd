@@ -106,14 +106,3 @@ function get_browser() {
         version: M[1]
     };
 }
-
-
-let acceptedVersions = [
-    "Opera15",
-    "Chrome62",
-    "Chrome61",
-    "Chrome59",
-    "Firefox57",
-    "Firefox58",
-    "Firefox59"
-];
