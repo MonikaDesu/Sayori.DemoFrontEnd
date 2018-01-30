@@ -32,7 +32,7 @@ function makeToast(text) {
     // This actually broke Materialize.
     //for (let oldToast of toasts) oldToast.dismiss();
 
-    toasts.push(M.toast({ html: text }));
+    toasts.push(M.toast({html: text}));
 }
 
 function sendPoem() {
