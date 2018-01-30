@@ -1,23 +1,23 @@
-var a = function() {
-  try {
-    new Function("(a = 0) => a");
-    return true;
-  }
-  catch (err) {
-    return false;
-  }
-}();
+var supportsOurES6 = (function() {
+    try {
+        new Function("() => null;");
+        new Function("const foo = null;");
+        new Function("let foo = null;");
 
-var elem = document.getElementById('unsupported-modal');
-var instance = M.Modal.init(elem, {
-    dismissible: false
-});
+        if (!window.Promise) {
+            return false;
+        } else {
+            return true;
+        }
+    } catch(err) {
+        return false;
+    }
+})();
 
-if (a) {
-  var script = document.createElement("script");
-  script.src = "my-es6-file.js";
-  document.head.appendChild(script);
-  console.log('Browser supports ECMAScript 6.');
+if (supportsOurES6) {
+    window.allowPassThrough = true;
+    console.log('Browser supports what we need.');
 } else {
-     instance.open();
+    window.allowPassThrough = false;
+    M.Modal.init(document.getElementById('unsupported-modal'), {dismissible: false}).open();
 }

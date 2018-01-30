@@ -1,91 +1,94 @@
-/* global navigator */
-const submitter = document.getElementById('poem-submitter');
-const spinner = document.getElementById('poem-spinner');
-const poemCard = document.getElementById('poem-card');
-const poemImg = document.getElementById('poem-card-img');
-const errCard = document.getElementById('error-card');
-const loading = document.getElementsByClassName('loading')[0];
-const toasts = [];
+(function() {
+    if (!window.allowPassThrough) return;
 
-let font = 'm1';
+    const submitter = document.getElementById('poem-submitter');
+    const spinner = document.getElementById('poem-spinner');
+    const poemCard = document.getElementById('poem-card');
+    const poemImg = document.getElementById('poem-card-img');
+    const errCard = document.getElementById('error-card');
+    const loading = document.getElementsByClassName('loading')[0];
+    const toasts = [];
 
-function makeToast(text) {
-    // This actually broke Materialize.
-    //for (let oldToast of toasts) oldToast.dismiss();
+    window.font = 'm1';
 
-    toasts.push(M.toast({html: text}));
-}
+    function makeToast(text) {
+        // This actually broke Materialize.
+        //for (let oldToast of toasts) oldToast.dismiss();
 
-function sendPoem() {
-    return new Promise((resolve, reject) => {
-        let text = document.getElementById('poem-text').value;
-        let payload = {
-            font: font,
-            poem: text
-        };
-        let req = new XMLHttpRequest();
+        toasts.push(M.toast({html: text}));
+    }
 
-        if (!text) {
-            makeToast('Please provide a poem to generate.');
-            return resolve();
-        }
-        else if (!['m1', 'n1', 's1', 'y1', 'y2', 'y3'].includes(font)) {
-            makeToast('Invalid font. Please use the dropdown to select a font.');
-            return resolve();
-        }
+    function sendPoem() {
+        return new Promise((resolve, reject) => {
+            let text = document.getElementById('poem-text').value;
+            let payload = {
+                font: font,
+                poem: text
+            };
+            let req = new XMLHttpRequest();
 
-        req.open('POST', 'https://sayori.headbow.stream/generate', true);
-        req.setRequestHeader('Content-Type', 'application/json');
-        req.send(JSON.stringify(payload));
+            if (!text) {
+                makeToast('Please provide a poem to generate.');
+                return resolve();
+            }
+            else if (!['m1', 'n1', 's1', 'y1', 'y2', 'y3'].includes(font)) {
+                makeToast('Invalid font. Please use the dropdown to select a font.');
+                return resolve();
+            }
 
-        req.addEventListener('load', function() {
-            if (this.status !== 200) return reject(new Error(`Invalid response code: ${this.statusText}`));
+            req.open('POST', 'https://sayori.headbow.stream/generate', true);
+            req.setRequestHeader('Content-Type', 'application/json');
+            req.send(JSON.stringify(payload));
 
-            let resp = JSON.parse(this.responseText);
+            req.addEventListener('load', function() {
+                if (this.status !== 200) return reject(new Error(`Invalid response code: ${this.statusText}`));
 
-            if (resp.error) return reject(new Error(resp.error));
+                let resp = JSON.parse(this.responseText);
 
-            poemCard.classList.remove('hidden');
+                if (resp.error) return reject(new Error(resp.error));
 
-            poemImg.href = resp.url;
-            poemImg.children[0].src = resp.url;
+                poemCard.classList.remove('hidden');
 
-            resolve();
+                poemImg.href = resp.url;
+                poemImg.children[0].src = resp.url;
+
+                resolve();
+            });
+            req.addEventListener('error', () => {
+                reject(new Error('An unknown network error occurred.'));
+            });
         });
-        req.addEventListener('error', () => {
-            reject(new Error('An unknown network error occurred.'));
+    }
+
+    function handleError(err) {
+        makeToast('Failed to generate poem!');
+
+        errCard.classList.remove('hidden');
+        document.getElementById('error-text').innerHTML = err.mesasge || err;
+    }
+
+    M.Dropdown.init(document.getElementById('poem-dropdown'));
+    submitter.addEventListener('click', function() {
+        this.classList.add('disabled');
+        errCard.classList.add('hidden');
+        spinner.classList.remove('hidden');
+
+        sendPoem().then(() => {
+            this.classList.remove('disabled');
+            spinner.classList.add('hidden');
+        }).catch(err => {
+            this.classList.remove('disabled');
+            spinner.classList.add('hidden');
+
+            handleError(err);
         });
     });
-}
-
-function handleError(err) {
-    makeToast('Failed to generate poem!');
-
-    errCard.classList.remove('hidden');
-    document.getElementById('error-text').innerHTML = err.mesasge || err;
-}
-
-M.Dropdown.init(document.getElementById('poem-dropdown'));
-submitter.addEventListener('click', function() {
-    this.classList.add('disabled');
-    errCard.classList.add('hidden');
-    spinner.classList.remove('hidden');
-
-    sendPoem().then(() => {
-        this.classList.remove('disabled');
-        spinner.classList.add('hidden');
-    }).catch(err => {
-        this.classList.remove('disabled');
-        spinner.classList.add('hidden');
-
-        handleError(err);
-    });
-});
-
-setTimeout(() => {
-    loading.style.opacity = '0';
 
     setTimeout(() => {
-        loading.style.display = 'none';
-    }, 750)
-}, 1000);
+        loading.style.opacity = '0';
+
+        setTimeout(() => {
+            loading.style.display = 'none';
+        }, 750)
+    }, 1000);
+})();

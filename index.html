@@ -43,11 +43,6 @@ SOFTWARE.
 </head>
 
 <body class="yellow lighten-5">
-    <div class="loading">
-        <div class="loading-wrap valign-wrapper">
-            <img class="floaty" src="img/air.png">
-        </div>
-    </div>
     <div id="unsupported-modal" class="modal">
         <div class="modal-content">
             <h4>Unsupported Browser</h4>
@@ -59,6 +54,11 @@ SOFTWARE.
             <p>
                 If you think this was a mistake, open a issue at <a href="https://github.com/MonikaDesu/Sayori.DemoFrontEnd/issues/new">GitHub</a> So at least we know~
             </p>
+        </div>
+    </div>
+    <div class="loading">
+        <div class="loading-wrap valign-wrapper">
+            <img class="floaty" src="img/air.png">
         </div>
     </div>
     <div class="container">
@@ -87,12 +87,12 @@ SOFTWARE.
 
                     <!-- Dropdown Structure -->
                     <ul id="dropdown1" class="dropdown-content">
-                        <li><a href="#" onclick="font = 'm1'">Monika</a></li>
-                        <li><a href="#" onclick="font = 'n1'">Natsuki</a></li>
-                        <li><a href="#" onclick="font = 's1'">Sayori</a></li>
-                        <li><a href="#" onclick="font = 'y1'">Yuri (Normal)</a></li>
-                        <li><a href="#" onclick="font = 'y2'">Yuri (Fast)</a></li>
-                        <li><a href="#" onclick="font = 'y3'">Yuri (Obsessed)</a></li>
+                        <li><a href="#" onclick="window.font = 'm1'">Monika</a></li>
+                        <li><a href="#" onclick="window.font = 'n1'">Natsuki</a></li>
+                        <li><a href="#" onclick="window.font = 's1'">Sayori</a></li>
+                        <li><a href="#" onclick="window.font = 'y1'">Yuri (Normal)</a></li>
+                        <li><a href="#" onclick="window.font = 'y2'">Yuri (Fast)</a></li>
+                        <li><a href="#" onclick="window.font = 'y3'">Yuri (Obsessed)</a></li>
                     </ul>
                     <form>
                         <div class="input-field col s12 card-container">
