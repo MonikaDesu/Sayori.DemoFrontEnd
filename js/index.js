@@ -4,29 +4,9 @@ const spinner = document.getElementById('poem-spinner');
 const poemCard = document.getElementById('poem-card');
 const poemImg = document.getElementById('poem-card-img');
 const errCard = document.getElementById('error-card');
-const browser = get_browser();
 const toasts = [];
 
 let font = 'm1';
-
-M.Dropdown.init(document.getElementById('poem-dropdown'));
-submitter.addEventListener('click', function() {
-    this.classList.add('disabled');
-    errCard.classList.add('hidden');
-    spinner.classList.remove('hidden');
-
-    sendPoem().then(() => {
-        this.classList.remove('disabled');
-        spinner.classList.add('hidden');
-    }).catch(err => {
-        this.classList.remove('disabled');
-        spinner.classList.add('hidden');
-
-        handleError(err);
-    });
-});
-
-console.log(`Detected Browser Version: ${browser.name} ${browser.version} \nInclude this output on when you report an issue in GitHub.`);
 
 function makeToast(text) {
     // This actually broke Materialize.
@@ -84,11 +64,7 @@ function handleError(err) {
     document.getElementById('error-text').innerHTML = err.mesasge || err;
 }
 
-/**
- * Gets the browser version 
- * @returns {Object}
- */
-function get_browser() {
+function getBrowser() {
     var ua = navigator.userAgent,
         tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
     if (/trident/i.test(M[1])) {
@@ -106,3 +82,24 @@ function get_browser() {
         version: M[1]
     };
 }
+
+const browser = getBrowser();
+
+M.Dropdown.init(document.getElementById('poem-dropdown'));
+submitter.addEventListener('click', function() {
+    this.classList.add('disabled');
+    errCard.classList.add('hidden');
+    spinner.classList.remove('hidden');
+
+    sendPoem().then(() => {
+        this.classList.remove('disabled');
+        spinner.classList.add('hidden');
+    }).catch(err => {
+        this.classList.remove('disabled');
+        spinner.classList.add('hidden');
+
+        handleError(err);
+    });
+});
+
+console.log(`Detected Browser Version: ${browser.name} ${browser.version} \nInclude this output on when you report an issue in GitHub.`);
