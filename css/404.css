@@ -1,8 +1,3 @@
-html {
-    display: flex;
-    margin-left: 300px;
-    margin-right: 300px;
-}
 
 body {
     display: flex;
@@ -11,16 +6,21 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 5%;
-    flex-wrap: wrap;
-    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-content: center;
 }
 
 .shiku-shiku {
-    z-index: 1;
+    flex-direction:column;
+    padding-bottom: 5%;
+    position: relative;
+    margin:auto;
+    left: 10px;
+    z-index: -2;
 }
 
 .text-cont {
-    z-index:2;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
