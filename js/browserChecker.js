@@ -14,10 +14,8 @@ var instance = M.Modal.init(elem, {
 });
 
 if (a) {
-  var script = document.createElement("script");
-  script.src = "my-es6-file.js";
-  document.head.appendChild(script);
   console.log('Browser supports ECMAScript 6.');
 } else {
-     instance.open();
+  instance.open();
+  console.error('Browser does not support ECMAScript 6.')
 }
