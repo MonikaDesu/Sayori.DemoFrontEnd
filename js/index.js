@@ -89,6 +89,6 @@
 
         setTimeout(() => {
             loading.style.display = 'none';
-        }, 750)
+        }, 750);
     }, 1000);
 })();
