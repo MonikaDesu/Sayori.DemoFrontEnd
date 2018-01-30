@@ -1,0 +1,26 @@
+html {
+    display: flex;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+body {
+    display: flex;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5%;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+}
+
+.shiku-shiku {
+    z-index: 1;
+}
+
+.text-cont {
+    z-index:2;
+}
