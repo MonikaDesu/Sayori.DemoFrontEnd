@@ -17,7 +17,7 @@ if (a) {
   var script = document.createElement("script");
   script.src = "my-es6-file.js";
   document.head.appendChild(script);
-  console.log('Browser supports ECMAScript 6.')
+  console.log('Browser supports ECMAScript 6.');
 } else {
      instance.open();
 }
