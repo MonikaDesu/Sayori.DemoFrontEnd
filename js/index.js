@@ -4,6 +4,7 @@ const spinner = document.getElementById('poem-spinner');
 const poemCard = document.getElementById('poem-card');
 const poemImg = document.getElementById('poem-card-img');
 const errCard = document.getElementById('error-card');
+const loading = document.getElementsByClassName('loading')[0];
 const toasts = [];
 
 let font = 'm1';
@@ -80,3 +81,11 @@ submitter.addEventListener('click', function() {
         handleError(err);
     });
 });
+
+setTimeout(() => {
+    loading.style.opacity = '0';
+
+    setTimeout(() => {
+        loading.style.display = 'none';
+    }, 750)
+}, 1000);
