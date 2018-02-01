@@ -11,11 +11,11 @@ body {
 }
 
 .shiku-shiku {
+    display: flex;
     flex-direction:column;
-    padding-bottom: 5%;
     position: relative;
     margin:auto;
-    left: 10px;
+    width: 100%;
     z-index: -2;
 }
 
