@@ -15,7 +15,7 @@
         // This actually broke Materialize.
         //for (let oldToast of toasts) oldToast.dismiss();
 
-        toasts.push(M.toast({html: text}));
+        toasts.push(M.toast({ html: text }));
     }
 
     function sendPoem() {
@@ -94,3 +94,16 @@
         }, 750);
     }, 1000);
 })();
+
+// analytics reminder
+
+setTimeout(() => {
+    let toasts = [];
+    function makeToast(text) {
+        // This actually broke Materialize.
+        for (let oldToast of toasts) oldToast.dismiss();
+
+        toasts.push(M.toast({ html: text }));
+    }
+    makeToast("Hey fam, just a little reminder we're analyzing data using Google Analytics to improve user experience. Don't worry, we only collect browser version and traffic, not personal info, Promise~!");
+}, 1000);
