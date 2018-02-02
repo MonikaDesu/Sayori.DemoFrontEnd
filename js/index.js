@@ -101,7 +101,7 @@ setTimeout(() => {
     let toasts = [];
     function makeToast(text) {
         // This actually broke Materialize.
-        for (var oldToast of toasts) oldToast.dismiss();
+        for (let oldToast of toasts) oldToast.dismiss();
 
         toasts.push(M.toast({ html: text }));
     }
