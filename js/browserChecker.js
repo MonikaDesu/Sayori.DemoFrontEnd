@@ -1,3 +1,8 @@
+/**
+ * @file Unit test for Browsers to check for ES6 compat 
+ * @author Capuccino
+ * @author Ovyerus
+ */
 var supportsOurES6 = (function() {
     try {
         new Function("() => null;");
