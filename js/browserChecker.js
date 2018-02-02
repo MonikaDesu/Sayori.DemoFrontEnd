@@ -28,9 +28,9 @@ else {
         var toasts = [];
 
         function makeToast(text) {
-            toasts.push(M.toast({ html: text }));
+            toasts.push(M.toast({ html: text, displayLength: Infinity }));
         }
         
-        makeToast(`Do you keep seeing this loading screen? If so, your browser does not support <a href="https://es6-features.org">ECMAScript 6</a>.`);
+        makeToast('Do you keep seeing this loading screen? If so, your browser does not support \u200b <a href="https://es6-features.org">ECMAScript 6</a>.');
     }, 5000);
 }
