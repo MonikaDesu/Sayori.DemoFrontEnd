@@ -107,3 +107,5 @@ setTimeout(() => {
     }
     makeToast("Hey fam, just a little reminder we're analyzing data using Google Analytics to improve user experience. Don't worry, we only collect browser version and traffic, not personal info, Promise~!");
 }, 1000);
+
+

@@ -33,6 +33,6 @@ else {
 
             toasts.push(M.toast({ html: text }));
         }
-        makeToast(`Do you keep seeing this loading screen? If so, your browser does not support <a href="https://es6-features.org"> ECMAScript 6 </a>`);
+        makeToast(`Do you keep seeing this loading screen? If so, your browser does not support <a href="https://es6-features.org">ECMAScript 6</a>.`);
     }, 5000);
 }
