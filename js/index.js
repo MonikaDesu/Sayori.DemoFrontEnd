@@ -38,7 +38,7 @@
 
             poemCard.classList.add('hidden');
 
-            req.open('POST', 'https://poemapi.maidcafe.me/generate', true);
+            req.open('POST', 'https://sy-production.herokuapp.com/generate', true);
             req.setRequestHeader('Content-Type', 'application/json');
             req.send(JSON.stringify(payload));
 
